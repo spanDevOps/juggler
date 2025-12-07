@@ -238,7 +238,7 @@ Juggler automatically falls back to alternative providers if one fails:
 | **Transcription** | Groq |
 | **Text-to-Speech** | Groq |
 
-See `docs/FALLBACK_CHAINS.md` for complete details.
+See [FALLBACK_CHAINS.md](https://github.com/spanDevOps/juggler/blob/main/docs/FALLBACK_CHAINS.md) for complete details.
 
 ## Supported Providers & Models
 
@@ -261,7 +261,7 @@ See `docs/FALLBACK_CHAINS.md` for complete details.
 | **Transcription** | Groq | whisper-large-v3, distil-whisper-large-v3 |
 | **Text-to-Speech** | Groq | whisper-large-v3-turbo |
 
-See `docs/MODEL_LIST.md` for complete model catalog.
+See [MODEL_LIST.md](https://github.com/spanDevOps/juggler/blob/main/docs/MODEL_LIST.md) for complete model catalog.
 
 ## How It Works
 
@@ -419,10 +419,10 @@ See the `examples/` directory for complete examples:
 📚 **[Complete Documentation](docs/)** - All guides, references, and implementation details
 
 **Quick Links:**
-- 📖 [User Guide](docs/USER_GUIDE.md) - Complete usage guide
-- 🔄 [Fallback Chains](docs/FALLBACK_CHAINS.md) - Provider fallback mapping
-- 📊 [Response Tracking](docs/MODELS_USED_TRACKING.md) - Track model usage
-- 🗂️ [Model List](docs/MODEL_LIST.md) - All available models
+- 📖 [User Guide](https://github.com/spanDevOps/juggler/blob/main/docs/USER_GUIDE.md) - Complete usage guide
+- 🔄 [Fallback Chains](https://github.com/spanDevOps/juggler/blob/main/docs/FALLBACK_CHAINS.md) - Provider fallback mapping
+- 📊 [Response Tracking](https://github.com/spanDevOps/juggler/blob/main/docs/MODELS_USED_TRACKING.md) - Track model usage
+- 🗂️ [Model List](https://github.com/spanDevOps/juggler/blob/main/docs/MODEL_LIST.md) - All available models
 
 ## Contributing
 
