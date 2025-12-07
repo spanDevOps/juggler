@@ -2,7 +2,7 @@
 
 **Juggle multiple LLM providers like a pro.** Smart routing, multi-key rotation, and automatic fallbacks across Cerebras, Groq, NVIDIA, Mistral, and Cohere.
 
-[![PyPI version](https://badge.fury.io/py/juggler.svg)](https://badge.fury.io/py/juggler)
+[![PyPI version](https://badge.fury.io/py/jugglerr.svg)](https://badge.fury.io/py/jugglerr)
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
@@ -26,7 +26,7 @@ Access powerful LLMs across multiple providers with automatic fallbacks, smart r
 ## Installation
 
 ```bash
-pip install juggler
+pip install jugglerr
 ```
 
 ## Quick Start
