@@ -423,7 +423,6 @@ See the `examples/` directory for complete examples:
 - 🔄 [Fallback Chains](docs/FALLBACK_CHAINS.md) - Provider fallback mapping
 - 📊 [Response Tracking](docs/MODELS_USED_TRACKING.md) - Track model usage
 - 🗂️ [Model List](docs/MODEL_LIST.md) - All available models
-- 🚀 [API Refactor Guide](docs/API_REFACTOR_2025-12-07.md) - Migration guide
 
 ## Contributing
 
