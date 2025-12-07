@@ -1,38 +1,38 @@
-# Juggler User Guide
+# Jugglerr User Guide
 
-**Complete guide to using Juggler for chat, embeddings, reranking, TTS, and STT**
+**Complete guide to using Jugglerr for chat, embeddings, reranking, TTS, and STT**
 
 ---
 
 ## Quick Start
 
 ```python
-from juggler import Juggler
+from jugglerr import Jugglerr
 
 # Initialize (auto-loads API keys from .env)
-juggler = Juggler()
+jugglerr = Jugglerr()
 
 # Chat
-response = juggler.chat([
+response = jugglerr.chat([
     {"role": "user", "content": "What is Python?"}
 ])
 print(response)
 
 # Embeddings
-embeddings = juggler.embed(["Hello world", "Python is great"])
+embeddings = jugglerr.embed(["Hello world", "Python is great"])
 
 # Reranking
-top_docs = juggler.rerank(
+top_docs = jugglerr.rerank(
     query="What is AI?",
     documents=["Doc 1", "Doc 2", "Doc 3"],
     top_k=2
 )
 
 # Speech-to-Text
-text = juggler.transcribe("audio.mp3")
+text = jugglerr.transcribe("audio.mp3")
 
 # Text-to-Speech
-audio = juggler.speak("Hello world", voice="Aria")
+audio = jugglerr.speak("Hello world", voice="Aria")
 audio.write_to_file("hello.mp3")
 ```
 
@@ -40,10 +40,10 @@ audio.write_to_file("hello.mp3")
 
 ## Installation & Setup
 
-### 1. Install Juggler
+### 1. Install Jugglerr
 
 ```bash
-pip install juggler
+pip install jugglerrr
 ```
 
 ### 2. Configure API Keys
@@ -63,16 +63,16 @@ COHERE_API_KEYS=co-xxx
 
 **Note**: You can provide multiple comma-separated keys for automatic rotation.
 
-### 3. Initialize Juggler
+### 3. Initialize Jugglerr
 
 ```python
-from juggler import Juggler
+from jugglerr import Jugglerr
 
 # Auto-loads from .env
-juggler = Juggler()
+jugglerr = Jugglerr()
 
 # Or pass keys explicitly
-juggler = Juggler(
+jugglerr = Jugglerr(
     cerebras_keys=["csk-xxx"],
     groq_keys=["gsk-xxx"],
     nvidia_keys=["nvapi-xxx"]
@@ -87,13 +87,13 @@ juggler = Juggler(
 
 ```python
 # Simple question
-response = juggler.chat([
+response = jugglerr.chat([
     {"role": "user", "content": "What is 2+2?"}
 ])
 print(response)  # "4"
 
 # Multi-turn conversation
-response = juggler.chat([
+response = jugglerr.chat([
     {"role": "user", "content": "My name is Alice"},
     {"role": "assistant", "content": "Nice to meet you, Alice!"},
     {"role": "user", "content": "What's my name?"}
@@ -105,13 +105,13 @@ print(response)  # "Your name is Alice"
 
 ```python
 # Use small, fast models (default)
-response = juggler.chat(
+response = jugglerr.chat(
     messages=[{"role": "user", "content": "Hello"}],
     power="regular"  # 7B-32B models
 )
 
 # Use large, smart models
-response = juggler.chat(
+response = jugglerr.chat(
     messages=[{"role": "user", "content": "Explain quantum computing"}],
     power="super"  # 70B+ models
 )
@@ -121,7 +121,7 @@ response = juggler.chat(
 
 ```python
 # Need vision?
-response = juggler.chat(
+response = jugglerr.chat(
     messages=[{
         "role": "user",
         "content": "What's in this image?",
@@ -131,13 +131,13 @@ response = juggler.chat(
 )
 
 # Need tool calling?
-response = juggler.chat(
+response = jugglerr.chat(
     messages=[{"role": "user", "content": "What's the weather?"}],
     capabilities=["tool_calling"]
 )
 
 # Need reasoning?
-response = juggler.chat(
+response = jugglerr.chat(
     messages=[{"role": "user", "content": "Solve this complex problem"}],
     capabilities=["reasoning"]
 )
@@ -147,7 +147,7 @@ response = juggler.chat(
 
 ```python
 # Use a specific model (no fallback to other providers)
-response = juggler.chat(
+response = jugglerr.chat(
     messages=[{"role": "user", "content": "Hello"}],
     preferred_model="llama-3.3-70b"  # Only uses Cerebras
 )
@@ -157,7 +157,7 @@ response = juggler.chat(
 
 ```python
 # Stream tokens in real-time
-for chunk in juggler.chat_stream(
+for chunk in jugglerr.chat_stream(
     messages=[{"role": "user", "content": "Tell me a story"}]
 ):
     print(chunk, end='', flush=True)
@@ -166,7 +166,7 @@ for chunk in juggler.chat_stream(
 ### Advanced Options
 
 ```python
-response = juggler.chat(
+response = jugglerr.chat(
     messages=[{"role": "user", "content": "Hello"}],
     temperature=0.7,      # Creativity (0.0-2.0)
     max_tokens=500,       # Max response length
@@ -187,11 +187,11 @@ Convert text to numerical vectors for semantic search, clustering, or similarity
 
 ```python
 # Single text
-embeddings = juggler.embed("Hello world")
+embeddings = jugglerr.embed("Hello world")
 print(len(embeddings[0]))  # 4096 dimensions
 
 # Multiple texts
-embeddings = juggler.embed([
+embeddings = jugglerr.embed([
     "Python is great",
     "JavaScript is popular",
     "Rust is fast"
@@ -203,10 +203,10 @@ print(len(embeddings))  # 3 embeddings
 
 ```python
 # Embed a search query
-query_embedding = juggler.embed_query("What is Python?")
+query_embedding = jugglerr.embed_query("What is Python?")
 
 # Embed documents/passages
-doc_embeddings = juggler.embed_documents([
+doc_embeddings = jugglerr.embed_documents([
     "Python is a programming language",
     "JavaScript runs in browsers",
     "Rust is a systems language"
@@ -219,13 +219,13 @@ doc_embeddings = juggler.embed_documents([
 
 ```python
 # Use a specific embedding model
-embeddings = juggler.embed(
+embeddings = jugglerr.embed(
     texts=["Hello world"],
     model="nvidia/nv-embed-v1"  # 4096 dims
 )
 
 # Or use Cohere/Mistral models
-embeddings = juggler.embed(
+embeddings = jugglerr.embed(
     texts=["Hello world"],
     model="embed-v4.0"  # Cohere
 )
@@ -233,7 +233,7 @@ embeddings = juggler.embed(
 
 ### Provider Fallback
 
-Juggler automatically tries providers in order:
+Jugglerr automatically tries providers in order:
 1. **NVIDIA** (free) - `nv-embed-v1` (4096 dims)
 2. **Cohere** (paid) - `embed-v4.0` (128K context)
 3. **Mistral** (paid) - `mistral-embed`
@@ -254,7 +254,7 @@ documents = [
     "Machine learning is a subset of AI"
 ]
 
-top_docs = juggler.rerank(
+top_docs = jugglerr.rerank(
     query="What is machine learning?",
     documents=documents,
     top_k=2  # Return top 2
@@ -269,14 +269,14 @@ print(top_docs)
 ```python
 # 1. Embed query
 query = "What is machine learning?"
-query_emb = juggler.embed_query(query)
+query_emb = jugglerr.embed_query(query)
 
 # 2. Search vector database (pseudo-code)
 # candidate_docs = vector_db.search(query_emb, top_k=20)
 
 # 3. Rerank for better accuracy
 candidate_docs = ["Doc 1", "Doc 2", "Doc 3", ...]  # From vector search
-top_docs = juggler.rerank(
+top_docs = jugglerr.rerank(
     query=query,
     documents=candidate_docs,
     top_k=3
@@ -284,14 +284,14 @@ top_docs = juggler.rerank(
 
 # 4. Use in RAG
 context = "\n".join(top_docs)
-response = juggler.chat([
+response = jugglerr.chat([
     {"role": "user", "content": f"Context: {context}\n\nQuestion: {query}"}
 ])
 ```
 
 ### Provider Fallback
 
-Juggler automatically tries providers in order:
+Jugglerr automatically tries providers in order:
 1. **NVIDIA** (free) - `llama-3.2-nv-rerankqa-1b-v2` (multilingual)
 2. **Cohere** (paid) - `rerank-v3.5` (multilingual)
 
@@ -305,31 +305,31 @@ Convert audio files to text.
 
 ```python
 # Transcribe audio file
-text = juggler.transcribe("audio.mp3")
+text = jugglerr.transcribe("audio.mp3")
 print(text)
 
 # From file object
 with open("audio.mp3", "rb") as f:
-    text = juggler.transcribe(f)
+    text = jugglerr.transcribe(f)
 ```
 
 ### Advanced Options
 
 ```python
 # Force specific language
-text = juggler.transcribe(
+text = jugglerr.transcribe(
     file="audio.mp3",
     language="en"  # en, es, fr, etc.
 )
 
 # Use faster model
-text = juggler.transcribe(
+text = jugglerr.transcribe(
     file="audio.mp3",
     model="whisper-large-v3-turbo"  # Faster than default
 )
 
 # More deterministic output
-text = juggler.transcribe(
+text = jugglerr.transcribe(
     file="audio.mp3",
     temperature=0.0  # Less random
 )
@@ -350,11 +350,11 @@ Convert text to spoken audio.
 
 ```python
 # Generate speech
-audio = juggler.speak("Hello, how are you?")
+audio = jugglerr.speak("Hello, how are you?")
 audio.write_to_file("hello.mp3")
 
 # Or save directly
-juggler.speak(
+jugglerr.speak(
     text="Hello world",
     output_file="hello.mp3"
 )
@@ -364,18 +364,18 @@ juggler.speak(
 
 ```python
 # Female voices
-audio = juggler.speak("Hello", voice="Aria")
-audio = juggler.speak("Hello", voice="Freya")
-audio = juggler.speak("Hello", voice="Mia")
+audio = jugglerr.speak("Hello", voice="Aria")
+audio = jugglerr.speak("Hello", voice="Freya")
+audio = jugglerr.speak("Hello", voice="Mia")
 
 # Male voices
-audio = juggler.speak("Hello", voice="Clyde")
-audio = juggler.speak("Hello", voice="Liam")
-audio = juggler.speak("Hello", voice="Orion")
+audio = jugglerr.speak("Hello", voice="Clyde")
+audio = jugglerr.speak("Hello", voice="Liam")
+audio = jugglerr.speak("Hello", voice="Orion")
 
 # Neutral voices
-audio = juggler.speak("Hello", voice="River")
-audio = juggler.speak("Hello", voice="Sky")
+audio = jugglerr.speak("Hello", voice="River")
+audio = jugglerr.speak("Hello", voice="Sky")
 ```
 
 **Available voices**: Aria, Clyde, Deedee, Finn, Freya, Kai, Liam, Mia, Nova, Orion, River, Sky
@@ -384,7 +384,7 @@ audio = juggler.speak("Hello", voice="Sky")
 
 ```python
 # Arabic text-to-speech
-audio = juggler.speak(
+audio = jugglerr.speak(
     text="مرحبا",
     model="playai-tts-arabic",
     voice="Laila"  # or "Majed"
@@ -412,7 +412,7 @@ GROQ_API_KEYS=gsk-xxx
 
 ### 2. Start with Free Providers
 
-Juggler automatically tries free providers first (Cerebras, Groq, NVIDIA).
+Jugglerr automatically tries free providers first (Cerebras, Groq, NVIDIA).
 
 ### 3. Use Power Levels Wisely
 
@@ -423,7 +423,7 @@ Juggler automatically tries free providers first (Cerebras, Groq, NVIDIA).
 
 ```python
 # Only use models that support vision
-response = juggler.chat(
+response = jugglerr.chat(
     messages=[...],
     capabilities=["vision"]
 )
@@ -433,7 +433,7 @@ response = juggler.chat(
 
 ```python
 # Better UX for long responses
-for chunk in juggler.chat_stream(messages=[...]):
+for chunk in jugglerr.chat_stream(messages=[...]):
     print(chunk, end='', flush=True)
 ```
 

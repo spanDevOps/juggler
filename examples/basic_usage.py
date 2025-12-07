@@ -1,9 +1,9 @@
-"""Basic usage example for Juggler."""
+"""Basic usage example for Jugglerr."""
 
-from juggler import Juggler
+from jugglerr import Jugglerr
 
 # Initialize with API keys (or auto-load from .env)
-juggler = Juggler(
+jugglerr = Jugglerr(
     cerebras_keys=["csk_..."],  # Replace with your keys
     groq_keys=["gsk_..."],
     nvidia_keys=["nvapi_..."],
@@ -12,21 +12,21 @@ juggler = Juggler(
 )
 
 # Or just auto-load from .env
-juggler = Juggler()
+jugglerr = Jugglerr()
 
 # Simple request
-response = juggler.chat("Hello, world! Tell me a joke.")
+response = jugglerr.chat("Hello, world! Tell me a joke.")
 print("Response:", response)
 print("Used:", response.models_used[0]['provider'], "/", response.models_used[0]['model'])
 
 # Multi-turn conversation
-response = juggler.chat([
+response = jugglerr.chat([
     {"role": "user", "content": "What is the capital of France?"}
 ])
 print("\nFirst response:", response)
 
 # Continue conversation
-response = juggler.chat([
+response = jugglerr.chat([
     {"role": "user", "content": "What is the capital of France?"},
     {"role": "assistant", "content": response},
     {"role": "user", "content": "What's the population?"}

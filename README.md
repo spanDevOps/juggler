@@ -1,4 +1,4 @@
-# 🤹 Juggler
+# 🤹 Jugglerr
 
 **Juggle multiple LLM providers like a pro.** Smart routing, multi-key rotation, and automatic fallbacks across Cerebras, Groq, NVIDIA, Mistral, and Cohere.
 
@@ -6,9 +6,9 @@
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-## Why Juggler?
+## Why Jugglerr?
 
-Access powerful LLMs across multiple providers with automatic fallbacks, smart routing, and response tracking. Juggler maximizes free tier usage while ensuring reliability.
+Access powerful LLMs across multiple providers with automatic fallbacks, smart routing, and response tracking. Jugglerr maximizes free tier usage while ensuring reliability.
 
 ### Key Features
 
@@ -32,13 +32,13 @@ pip install jugglerr
 ## Quick Start
 
 ```python
-from juggler import Juggler
+from jugglerr import Jugglerr
 
 # Auto-loads from .env file
-juggler = Juggler()
+jugglerr = Jugglerr()
 
 # Simple chat request
-response = juggler.chat("Hello, world!")
+response = jugglerr.chat("Hello, world!")
 print(response)  # "Hello! How can I help you today?"
 
 # Access tracking info
@@ -62,10 +62,10 @@ COHERE_API_KEYS=cohere_key1
 
 ```python
 # Keys loaded automatically
-juggler = Juggler()
+jugglerr = Jugglerr()
 
 # Or pass keys directly
-juggler = Juggler(
+jugglerr = Jugglerr(
     cerebras_keys=["csk_..."],
     groq_keys=["gsk_..."],
     nvidia_keys=["nvapi_..."]
@@ -77,16 +77,16 @@ juggler = Juggler(
 ### 1. Chat with Automatic Fallbacks
 
 ```python
-from juggler import Juggler
+from jugglerr import Jugglerr
 
-juggler = Juggler()
+jugglerr = Jugglerr()
 
 # Simple chat - automatically selects best model
-response = juggler.chat("Explain quantum computing")
+response = jugglerr.chat("Explain quantum computing")
 print(response)
 
 # With conversation history
-response = juggler.chat([
+response = jugglerr.chat([
     {"role": "user", "content": "What's 2+2?"},
     {"role": "assistant", "content": "4"},
     {"role": "user", "content": "What about 2+3?"}
@@ -101,11 +101,11 @@ print(response.models_used)
 
 ```python
 # Stream tokens in real-time
-for chunk in juggler.chat_stream("Tell me a story"):
+for chunk in jugglerr.chat_stream("Tell me a story"):
     print(chunk, end='', flush=True)
 
 # With parameters
-for chunk in juggler.chat_stream(
+for chunk in jugglerr.chat_stream(
     "Explain AI",
     power="super",
     temperature=0.7
@@ -117,13 +117,13 @@ for chunk in juggler.chat_stream(
 
 ```python
 # Generate embeddings (NVIDIA → Cohere → Mistral fallback)
-embedding = juggler.embed("Hello, world!")
+embedding = jugglerr.embed("Hello, world!")
 print(embedding)  # [0.123, -0.456, ...]
 print(embedding.models_used)  # Track which provider was used
 print(embedding.dimensions)  # 1024
 
 # Batch embeddings
-embeddings = juggler.embed([
+embeddings = jugglerr.embed([
     "First document",
     "Second document",
     "Third document"
@@ -134,7 +134,7 @@ embeddings = juggler.embed([
 
 ```python
 # Rerank search results (NVIDIA → Cohere fallback)
-results = juggler.rerank(
+results = jugglerr.rerank(
     query="What is machine learning?",
     documents=[
         "ML is a subset of AI...",
@@ -155,26 +155,26 @@ print(results.scores)  # [0.95, 0.12, 0.87]
 
 ```python
 # Transcribe audio file
-result = juggler.transcribe("audio.mp3")
+result = jugglerr.transcribe("audio.mp3")
 print(result)  # "Hello, this is a test..."
 print(result.language)  # "en"
 print(result.duration)  # 5.2
 print(result.models_used)
 
 # With language hint
-result = juggler.transcribe("spanish.mp3", language="es")
+result = jugglerr.transcribe("spanish.mp3", language="es")
 ```
 
 ### 6. Text-to-Speech
 
 ```python
 # Generate speech
-audio = juggler.speak("Hello, world!")
+audio = jugglerr.speak("Hello, world!")
 audio.write_to_file("output.mp3")
 print(audio.models_used)
 
 # With voice selection
-audio = juggler.speak(
+audio = jugglerr.speak(
     "This is a test",
     voice="alloy",
     speed=1.2
@@ -185,25 +185,25 @@ audio = juggler.speak(
 
 ```python
 # Use smaller, faster models (7B-32B)
-response = juggler.chat(
+response = jugglerr.chat(
     "Quick question",
     power="regular"
 )
 
 # Use larger, more capable models (70B+)
-response = juggler.chat(
+response = jugglerr.chat(
     "Complex analysis needed",
     power="super"
 )
 
 # Request specific capabilities
-response = juggler.chat(
+response = jugglerr.chat(
     "Analyze this image",
     capabilities=["vision"]
 )
 
 # Large context window
-response = juggler.chat(
+response = jugglerr.chat(
     "Analyze this long document...",
     context_window="large"
 )
@@ -214,7 +214,7 @@ response = juggler.chat(
 All responses include `models_used` attribute:
 
 ```python
-response = juggler.chat("Hello")
+response = jugglerr.chat("Hello")
 
 # See which models were tried
 for attempt in response.models_used:
@@ -228,7 +228,7 @@ for attempt in response.models_used:
 
 ## Fallback Chains
 
-Juggler automatically falls back to alternative providers if one fails:
+Jugglerr automatically falls back to alternative providers if one fails:
 
 | Request Type | Fallback Chain |
 |--------------|----------------|
@@ -274,7 +274,7 @@ See [MODEL_LIST.md](https://github.com/spanDevOps/jugglerr/blob/main/docs/MODEL_
 
 ## Comparison with Alternatives
 
-| Feature | LiteLLM | OpenRouter | **Juggler** |
+| Feature | LiteLLM | OpenRouter | **Jugglerr** |
 |---------|---------|------------|-------------|
 | Open source | ✅ | ❌ | ✅ |
 | Multi-key rotation | ❌ | ❌ | ✅ |
@@ -288,13 +288,13 @@ See [MODEL_LIST.md](https://github.com/spanDevOps/jugglerr/blob/main/docs/MODEL_
 ### Initialization
 
 ```python
-from juggler import Juggler
+from jugglerr import Jugglerr
 
 # Auto-load from .env
-juggler = Juggler()
+jugglerr = Jugglerr()
 
 # Or pass keys directly
-juggler = Juggler(
+jugglerr = Jugglerr(
     cerebras_keys=["key1", "key2"],
     groq_keys=["key1", "key2"],
     nvidia_keys=["key1"],
@@ -310,7 +310,7 @@ juggler = Juggler(
 #      temperature=0.7, max_tokens=None, preferred_provider=None, 
 #      preferred_model=None, **kwargs) -> ChatResponse
 
-response = juggler.chat(
+response = jugglerr.chat(
     "Hello",                    # String or list of message dicts
     power="regular",            # "regular" or "super"
     capabilities=["vision"],    # List of required capabilities
@@ -321,7 +321,7 @@ response = juggler.chat(
 )
 
 # chat_stream(...) -> Generator[str]
-for chunk in juggler.chat_stream("Hello"):
+for chunk in jugglerr.chat_stream("Hello"):
     print(chunk, end='')
 ```
 
@@ -329,24 +329,24 @@ for chunk in juggler.chat_stream("Hello"):
 
 ```python
 # Embeddings
-embedding = juggler.embed("text")  # Returns EmbeddingResponse (list subclass)
-embeddings = juggler.embed(["text1", "text2"])
+embedding = jugglerr.embed("text")  # Returns EmbeddingResponse (list subclass)
+embeddings = jugglerr.embed(["text1", "text2"])
 
 # Reranking
-results = juggler.rerank(
+results = jugglerr.rerank(
     query="search query",
     documents=["doc1", "doc2", "doc3"],
     top_n=3  # Optional
 )  # Returns RerankResponse (list subclass)
 
 # Transcription
-text = juggler.transcribe(
+text = jugglerr.transcribe(
     "audio.mp3",
     language="en"  # Optional
 )  # Returns TranscriptionResponse (str subclass)
 
 # Text-to-Speech
-audio = juggler.speak(
+audio = jugglerr.speak(
     "Hello, world!",
     voice="alloy",  # Optional
     speed=1.0       # Optional
@@ -359,7 +359,7 @@ audio.write_to_file("output.mp3")
 All responses include `models_used` attribute:
 
 ```python
-response = juggler.chat("Hello")
+response = jugglerr.chat("Hello")
 print(response.models_used)
 # [{'provider': 'cerebras', 'model': 'llama3.1-8b', 'success': True, 
 #   'timestamp': '2025-12-07T...', 'latency_ms': 234}]
@@ -442,13 +442,13 @@ MIT License - see [LICENSE](https://github.com/spanDevOps/jugglerr/blob/main/LIC
 
 ### Support This Project
 
-If Juggler helps you save time and money, consider supporting its development:
+If Jugglerr helps you save time and money, consider supporting its development:
 
 ☕ **[Buy Me a Coffee](https://buymeacoffee.com/spancoder)** - One-time support
 
 ### Consulting & Enterprise Support
 
-Need help integrating Juggler into your production systems? I offer:
+Need help integrating Jugglerr into your production systems? I offer:
 
 - Custom integration support
 - Enterprise deployment assistance

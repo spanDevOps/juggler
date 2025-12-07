@@ -2,6 +2,6 @@ include README.md
 include LICENSE
 include requirements.txt
 include requirements-dev.txt
-recursive-include juggler *.py
+recursive-include jugglerr *.py
 recursive-exclude tests *
 recursive-exclude examples *

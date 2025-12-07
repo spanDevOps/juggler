@@ -1,18 +1,18 @@
 """
-Parse provider documentation using Juggler's own LLMs.
+Parse provider documentation using Jugglerr's own LLMs.
 
-This script takes raw HTML/text from provider docs and uses Juggler
+This script takes raw HTML/text from provider docs and uses Jugglerr
 to extract model information intelligently.
 """
 
 import json
 import sys
-from juggler import LLMJuggler
+from jugglerr import LLMJugglerr
 
 
 def parse_models_from_docs(content: str, provider: str) -> dict:
     """
-    Use Juggler to parse provider documentation and extract model info.
+    Use Jugglerr to parse provider documentation and extract model info.
     
     Args:
         content: Raw HTML or text content from provider docs
@@ -21,7 +21,7 @@ def parse_models_from_docs(content: str, provider: str) -> dict:
     Returns:
         dict: Parsed model information
     """
-    juggler = LLMJuggler()
+    jugglerr = LLMJugglerr()
     
     prompt = f"""
 You are analyzing documentation for {provider} LLM provider.
@@ -52,7 +52,7 @@ Return ONLY the JSON array, no other text.
 """
     
     try:
-        response = juggler.juggle(
+        response = jugglerr.juggle(
             messages=[{"role": "user", "content": prompt}],
             preferred_provider='groq',  # Fast and free
             temperature=0.1,  # Low temp for accuracy
@@ -95,7 +95,7 @@ def compare_with_existing(provider: str, new_models: list) -> dict:
             'removed_models': [...]
         }
     """
-    from juggler.models import MODEL_DATABASE
+    from jugglerr.models import MODEL_DATABASE
     
     existing = MODEL_DATABASE.get(provider, {})
     existing_names = set(existing.keys())

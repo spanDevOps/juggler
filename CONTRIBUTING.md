@@ -1,6 +1,6 @@
-# Contributing to LLM Juggler
+# Contributing to Jugglerr
 
-Thank you for your interest in contributing to LLM Juggler! 🤹
+Thank you for your interest in contributing to Jugglerr! 🤹
 
 ## How to Contribute
 
@@ -107,7 +107,7 @@ To add a new model to the database:
 
 To add a new provider:
 
-1. Add API endpoint to `API_ENDPOINTS` in `juggler.py`
+1. Add API endpoint to `API_ENDPOINTS` in `jugglerr/jugglerr.py`
 2. Add provider to `PROVIDER_PRIORITY`
 3. Add rate limit header parsing logic (if available)
 4. Add models to `models.py`
@@ -134,4 +134,4 @@ By contributing, you agree that your contributions will be licensed under the MI
 
 ---
 
-Thank you for helping make LLM Juggler better! 🎪
+Thank you for helping make Jugglerr better! 🎪

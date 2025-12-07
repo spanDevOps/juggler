@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Comprehensive test of ALL Juggler models.
+Comprehensive test of ALL Jugglerr models.
 Tests each model with both regular and streaming requests.
 """
 import os
@@ -16,8 +16,8 @@ load_dotenv()
 # Add parent directory to path
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from juggler import Juggler
-from juggler.models import MODEL_DATABASE
+from jugglerr import Jugglerr
+from jugglerr.models import MODEL_DATABASE
 
 # Test prompts
 TEST_PROMPTS = {
@@ -38,13 +38,13 @@ def get_all_models():
             })
     return models
 
-def test_model_regular(juggler, model_id, provider, prompt):
-    """Test a model with regular request - using Juggler as a user would."""
+def test_model_regular(jugglerr, model_id, provider, prompt):
+    """Test a model with regular request - using Jugglerr as a user would."""
     try:
         start_time = time.time()
         
-        # Use Juggler exactly as a user would - just specify the model
-        response = juggler.chat(
+        # Use Jugglerr exactly as a user would - just specify the model
+        response = jugglerr.chat(
             messages=[{"role": "user", "content": prompt}],
             preferred_model=model_id,
             max_tokens=100,
@@ -66,14 +66,14 @@ def test_model_regular(juggler, model_id, provider, prompt):
             'error_type': type(e).__name__
         }
 
-def test_model_streaming(juggler, model_id, provider, prompt):
-    """Test a model with streaming request - using Juggler as a user would."""
+def test_model_streaming(jugglerr, model_id, provider, prompt):
+    """Test a model with streaming request - using Jugglerr as a user would."""
     try:
         start_time = time.time()
         chunks = []
         
-        # Use Juggler exactly as a user would - just specify the model
-        for chunk in juggler.chat_stream(
+        # Use Jugglerr exactly as a user would - just specify the model
+        for chunk in jugglerr.chat_stream(
             messages=[{"role": "user", "content": prompt}],
             preferred_model=model_id,
             max_tokens=100,
@@ -100,15 +100,15 @@ def test_model_streaming(juggler, model_id, provider, prompt):
 
 def main():
     print("=" * 80)
-    print("COMPREHENSIVE JUGGLER MODEL TEST")
+    print("COMPREHENSIVE JUGGLERR MODEL TEST")
     print("=" * 80)
     print(f"Started: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
     print()
     
-    # Initialize Juggler (auto-loads from .env)
-    print("Initializing Juggler...")
-    juggler = Juggler()
-    print("✓ Juggler initialized")
+    # Initialize Jugglerr (auto-loads from .env)
+    print("Initializing Jugglerr...")
+    jugglerr = Jugglerr()
+    print("✓ Jugglerr initialized")
     print()
     
     # Get all models
@@ -144,7 +144,7 @@ def main():
         
         # Test 1: Regular request
         print("  [1/2] Testing regular request...")
-        regular_result = test_model_regular(juggler, model_id, provider, TEST_PROMPTS['simple'])
+        regular_result = test_model_regular(jugglerr, model_id, provider, TEST_PROMPTS['simple'])
         model_results['tests']['regular'] = regular_result
         
         if regular_result['success']:
@@ -157,7 +157,7 @@ def main():
         # Test 2: Streaming request (only if model supports streaming)
         if 'streaming' in model['info'].get('capabilities', []):
             print("  [2/2] Testing streaming request...")
-            stream_result = test_model_streaming(juggler, model_id, provider, TEST_PROMPTS['simple'])
+            stream_result = test_model_streaming(jugglerr, model_id, provider, TEST_PROMPTS['simple'])
             model_results['tests']['streaming'] = stream_result
             
             if stream_result['success']:

@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """
-Naive user style examples - just specify what you need, let Juggler choose.
+Naive user style examples - just specify what you need, let Jugglerr choose.
 
-This shows how a typical user would use Juggler without worrying about
+This shows how a typical user would use Jugglerr without worrying about
 specific models or providers.
 """
 
@@ -12,19 +12,19 @@ import os
 # Add parent directory to path
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from juggler import Juggler
+from jugglerr import Jugglerr
 
-juggler = Juggler()
+jugglerr = Jugglerr()
 
 print("=" * 70)
-print("NAIVE USER STYLE - LET JUGGLER CHOOSE")
+print("NAIVE USER STYLE - LET JUGGLERR CHOOSE")
 print("=" * 70)
 
 # Example 1: Simple chat - no requirements
 print("\n1. SIMPLE CHAT (no requirements)")
 print("-" * 70)
 print("User: Just wants a response, doesn't care which model")
-response = juggler.chat([
+response = jugglerr.chat([
     {"role": "user", "content": "What is 2+2?"}
 ])
 print(f"Response: {response}")
@@ -34,7 +34,7 @@ print(f"Used: {response.models_used[0].provider}/{response.models_used[0].model}
 print("\n2. COMPLEX TASK (power='super')")
 print("-" * 70)
 print("User: Needs a powerful model for complex reasoning")
-response = juggler.chat(
+response = jugglerr.chat(
     messages=[{"role": "user", "content": "Explain quantum entanglement in simple terms"}],
     power="super"  # Use 70B+ models
 )
@@ -46,7 +46,7 @@ print("\n3. VISION TASK (capabilities=['vision'])")
 print("-" * 70)
 print("User: Needs to analyze an image")
 print("(Skipping actual image - would include base64 image data)")
-# response = juggler.chat(
+# response = jugglerr.chat(
 #     messages=[{
 #         "role": "user",
 #         "content": "What's in this image?",
@@ -60,7 +60,7 @@ print("Would use: Groq/Mistral/NVIDIA vision models")
 print("\n4. TOOL CALLING (capabilities=['tool_calling'])")
 print("-" * 70)
 print("User: Needs function calling")
-response = juggler.chat(
+response = jugglerr.chat(
     messages=[{"role": "user", "content": "What's the weather like?"}],
     capabilities=["tool_calling"]
 )
@@ -71,7 +71,7 @@ print(f"Used: {response.models_used[0].provider}/{response.models_used[0].model}
 print("\n5. REASONING TASK (capabilities=['reasoning'])")
 print("-" * 70)
 print("User: Needs advanced reasoning")
-response = juggler.chat(
+response = jugglerr.chat(
     messages=[{"role": "user", "content": "Solve this logic puzzle: ..."}],
     capabilities=["reasoning"]
 )
@@ -83,7 +83,7 @@ print("\n6. MULTIPLE CAPABILITIES (vision + reasoning)")
 print("-" * 70)
 print("User: Needs both vision and reasoning")
 print("(Would use models that support both)")
-# response = juggler.chat(
+# response = jugglerr.chat(
 #     messages=[{
 #         "role": "user",
 #         "content": "Analyze this chart and explain the trend",
@@ -97,7 +97,7 @@ print("Would use: Models with both vision and reasoning")
 print("\n7. EMBEDDINGS (no model specified)")
 print("-" * 70)
 print("User: Just wants embeddings")
-embeddings = juggler.embed(["Hello", "World"])
+embeddings = jugglerr.embed(["Hello", "World"])
 print(f"Generated {len(embeddings)} embeddings of {embeddings.dimensions} dimensions")
 print(f"Used: {embeddings.models_used[0].provider}/{embeddings.models_used[0].model}")
 
@@ -106,7 +106,7 @@ print("\n8. RERANKING (no model specified)")
 print("-" * 70)
 print("User: Just wants documents reranked")
 docs = ["Python is great", "The sky is blue", "AI is powerful"]
-top_docs = juggler.rerank("What is AI?", docs, top_k=2)
+top_docs = jugglerr.rerank("What is AI?", docs, top_k=2)
 print(f"Top {len(top_docs)} documents:")
 for i, doc in enumerate(top_docs, 1):
     print(f"  {i}. {doc}")
@@ -117,7 +117,7 @@ print("\n9. STREAMING (no requirements)")
 print("-" * 70)
 print("User: Wants real-time streaming")
 print("Response: ", end='', flush=True)
-for chunk in juggler.chat_stream([
+for chunk in jugglerr.chat_stream([
     {"role": "user", "content": "Count from 1 to 5"}
 ]):
     print(chunk, end='', flush=True)
@@ -127,7 +127,7 @@ print()
 print("\n10. FAST MODEL (power='regular')")
 print("-" * 70)
 print("User: Simple task, wants fast response")
-response = juggler.chat(
+response = jugglerr.chat(
     messages=[{"role": "user", "content": "Say hello"}],
     power="regular"  # Use 7B-32B models (faster)
 )

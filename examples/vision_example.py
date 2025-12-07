@@ -1,14 +1,14 @@
 """Vision model usage example."""
 
-from juggler import LLMJuggler, Capabilities
+from jugglerr import LLMJugglerr, Capabilities
 
-juggler = LLMJuggler(
+jugglerr = LLMJugglerr(
     groq_keys=["gsk_..."]  # Vision only available on Groq
 )
 
 # Example 1: Analyze an image URL
 print("=== Image Analysis ===")
-response = juggler.juggle(
+response = jugglerr.juggle(
     messages=[{
         "role": "user",
         "content": [
@@ -22,7 +22,7 @@ print(response)
 
 # Example 2: Compare two images
 print("\n=== Image Comparison ===")
-response = juggler.juggle(
+response = jugglerr.juggle(
     messages=[{
         "role": "user",
         "content": [
@@ -37,7 +37,7 @@ print(response)
 
 # Example 3: OCR - Extract text from image
 print("\n=== OCR Example ===")
-response = juggler.juggle(
+response = jugglerr.juggle(
     messages=[{
         "role": "user",
         "content": [

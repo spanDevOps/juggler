@@ -248,7 +248,7 @@ def rerank(
         List of reranked documents
     
     Example:
-        >>> from juggler import rerank
+        >>> from jugglerr import rerank
         >>> docs = ["Doc 1", "Doc 2", "Doc 3"]
         >>> ranked = rerank("query", docs, top_n=2)
         >>> print(ranked[0])  # Best match

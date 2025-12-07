@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """
-Example showing models_used tracking in Juggler responses.
+Example showing models_used tracking in Jugglerr responses.
 
-All Juggler methods return objects that behave like their simple types
+All Jugglerr methods return objects that behave like their simple types
 (string, list) but include a models_used attribute for transparency.
 """
 
@@ -13,9 +13,9 @@ import json
 # Add parent directory to path
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from juggler import Juggler
+from jugglerr import Jugglerr
 
-juggler = Juggler()
+jugglerr = Jugglerr()
 
 print("=" * 70)
 print("MODELS_USED TRACKING EXAMPLES")
@@ -24,7 +24,7 @@ print("=" * 70)
 # Example 1: Chat - behaves like a string
 print("\n1. CHAT RESPONSE")
 print("-" * 70)
-response = juggler.chat([
+response = jugglerr.chat([
     {"role": "user", "content": "Say 'Hello' in one word."}
 ])
 
@@ -44,7 +44,7 @@ for attempt in response.models_used:
 # Example 2: Embeddings - behaves like a list
 print("\n2. EMBEDDING RESPONSE")
 print("-" * 70)
-embeddings = juggler.embed(["Hello", "World"])
+embeddings = jugglerr.embed(["Hello", "World"])
 
 # Works like a list
 print(f"Number of embeddings: {len(embeddings)}")
@@ -64,7 +64,7 @@ print(f"Dimensions: {embeddings.dimensions}")
 print("\n3. RERANK RESPONSE")
 print("-" * 70)
 docs = ["Python is great", "The sky is blue", "AI is powerful"]
-top_docs = juggler.rerank("What is AI?", docs, top_k=2)
+top_docs = jugglerr.rerank("What is AI?", docs, top_k=2)
 
 # Works like a list
 print(f"Top documents: {len(top_docs)}")
@@ -80,7 +80,7 @@ for attempt in top_docs.models_used:
 # Example 4: Serializing models_used to JSON
 print("\n4. SERIALIZING TO JSON")
 print("-" * 70)
-response = juggler.chat([
+response = jugglerr.chat([
     {"role": "user", "content": "Count to 3"}
 ])
 
@@ -95,7 +95,7 @@ print(json.dumps(tracking_data, indent=2))
 # Example 5: Checking fallback path
 print("\n5. UNDERSTANDING FALLBACK PATH")
 print("-" * 70)
-response = juggler.chat([
+response = jugglerr.chat([
     {"role": "user", "content": "Hello"}
 ])
 

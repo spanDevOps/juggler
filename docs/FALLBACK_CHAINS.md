@@ -1,4 +1,4 @@
-# Juggler Fallback Chains
+# Jugglerr Fallback Chains
 
 **Complete mapping of provider fallback logic for all request types**
 
@@ -6,7 +6,7 @@
 
 ## Overview
 
-Juggler automatically tries multiple providers in order until one succeeds. This document maps out the exact fallback chain for each type of request.
+Jugglerr automatically tries multiple providers in order until one succeeds. This document maps out the exact fallback chain for each type of request.
 
 ---
 
@@ -292,7 +292,7 @@ When a user requests a specific model via `preferred_model`:
 NO FALLBACK - Only tries the provider that owns that model
 
 Example:
-juggler.chat(preferred_model="llama-3.3-70b")
+jugglerr.chat(preferred_model="llama-3.3-70b")
 └─ Only tries Cerebras (no fallback to Groq/Mistral/etc.)
 
 Reason: User explicitly wants THAT model, not a similar one
@@ -306,7 +306,7 @@ When a user specifies `preferred_provider`:
 Tries preferred provider first, then falls back to normal priority
 
 Example:
-juggler.chat(preferred_provider="groq")
+jugglerr.chat(preferred_provider="groq")
 └─ Priority: [groq, cerebras, nvidia, mistral, cohere, openai]
    (groq moved to front)
 ```
@@ -319,23 +319,23 @@ juggler.chat(preferred_provider="groq")
 
 1. **Rate Limit (429)**
    - Provider returns 429 status
-   - Juggler tries next provider immediately
+   - Jugglerr tries next provider immediately
 
 2. **API Error (4xx, 5xx)**
    - Provider returns error status
-   - Juggler tries next provider
+   - Jugglerr tries next provider
 
 3. **No API Keys**
    - Provider has no configured keys
-   - Juggler skips to next provider
+   - Jugglerr skips to next provider
 
 4. **Timeout**
    - Request takes too long
-   - Juggler tries next provider
+   - Jugglerr tries next provider
 
 5. **No Matching Model**
    - Provider has no model matching requirements
-   - Juggler skips to next provider
+   - Jugglerr skips to next provider
 
 ### What Does NOT Cause Fallback?
 
@@ -353,7 +353,7 @@ juggler.chat(preferred_provider="groq")
 
 ### models_used Field
 
-Every Juggler response includes `models_used` tracking:
+Every Jugglerr response includes `models_used` tracking:
 
 ```python
 {
@@ -400,7 +400,7 @@ This helps users:
 
 ## Best Practices
 
-1. **Let Juggler Choose**: Don't specify `preferred_model` unless you need that exact model
+1. **Let Jugglerr Choose**: Don't specify `preferred_model` unless you need that exact model
 2. **Use Capabilities**: Specify `capabilities=["vision"]` instead of picking a model
 3. **Use Power Levels**: Use `power="super"` for complex tasks, `power="regular"` for simple ones
 4. **Check models_used**: Review the fallback path to understand provider behavior

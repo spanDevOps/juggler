@@ -7,7 +7,7 @@ Demonstrates usage of Mistral-specific adapters:
 3. Moderation (mistral-moderation-latest)
 """
 
-from juggler import (
+from jugglerr import (
     MistralEmbeddingAdapter,
     MistralOCRAdapter,
     MistralModerationAdapter,

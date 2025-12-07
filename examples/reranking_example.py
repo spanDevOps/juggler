@@ -8,7 +8,7 @@ Impact: ~24% improvement in recall@5 (0.5699 → 0.7070)
 """
 
 import os
-from juggler import RerankAdapter, rerank
+from jugglerr import RerankAdapter, rerank
 
 # Get API key
 api_key = os.getenv("NVIDIA_API_KEY") or os.getenv("NVIDIA_API_KEYS", "").split(",")[0]

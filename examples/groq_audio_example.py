@@ -8,7 +8,7 @@ This demonstrates:
 """
 
 import os
-from juggler import (
+from jugglerr import (
     GroqTTSAdapter,
     GroqTranscriptionAdapter,
     GroqTranslationAdapter,

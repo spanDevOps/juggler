@@ -341,19 +341,19 @@ All models support streaming ✅
 ## Usage Examples
 
 ```python
-from juggler import LLMJuggler
+from Jugglerr import LLMJuggler
 
-juggler = LLMJuggler()
+Jugglerr = LLMJuggler()
 
 # Use fastest model
-response = juggler.juggle(
+response = Jugglerr.juggle(
     messages=[{"role": "user", "content": "Quick question"}],
     preferred_provider="groq",
     preferred_model="llama-3.1-8b-instant"
 )
 
 # Use best quality
-response = juggler.juggle(
+response = Jugglerr.juggle(
     messages=[{"role": "user", "content": "Complex analysis"}],
     power="super",
     preferred_provider="cerebras",
@@ -361,14 +361,14 @@ response = juggler.juggle(
 )
 
 # Use vision model
-response = juggler.juggle(
+response = Jugglerr.juggle(
     messages=[{"role": "user", "content": "Describe this image"}],
     capabilities=["vision"],
     preferred_provider="groq"
 )
 
 # Stream response
-for chunk in juggler.juggle_stream(
+for chunk in Jugglerr.juggle_stream(
     messages=[{"role": "user", "content": "Tell me a story"}],
     preferred_provider="cerebras"
 ):

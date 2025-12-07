@@ -23,7 +23,7 @@ import sys
 import os
 sys.path.insert(0, os.path.dirname(os.path.dirname(__file__)))
 
-from juggler import RivaTTSAdapter
+from jugglerr import RivaTTSAdapter
 
 # Initialize adapter (point to your self-hosted instance)
 tts = RivaTTSAdapter(base_url="http://localhost:9000")

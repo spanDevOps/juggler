@@ -1,8 +1,8 @@
-"""Custom exceptions for LLM Juggler."""
+"""Custom exceptions for Jugglerr."""
 
 
 class LLMJugglerError(Exception):
-    """Base exception for LLM Juggler."""
+    """Base exception for Jugglerr."""
     pass
 
 

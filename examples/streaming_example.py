@@ -8,13 +8,13 @@ import sys
 import os
 sys.path.insert(0, os.path.dirname(os.path.dirname(__file__)))
 
-from juggler import LLMJuggler
+from jugglerr import LLMJugglerr
 from dotenv import load_dotenv
 
 load_dotenv()
 
-# Initialize juggler
-juggler = LLMJuggler()
+# Initialize jugglerr
+jugglerr = LLMJugglerr()
 
 print("="*80)
 print("STREAMING CHAT EXAMPLES")
@@ -27,7 +27,7 @@ print("User: Tell me a short story about a robot.")
 print("Assistant: ", end='', flush=True)
 
 try:
-    for chunk in juggler.juggle_stream([
+    for chunk in jugglerr.juggle_stream([
         {"role": "user", "content": "Tell me a short story about a robot learning to paint. Keep it under 100 words."}
     ]):
         print(chunk, end='', flush=True)
@@ -42,7 +42,7 @@ print("User: Write a haiku about coding.")
 print("Assistant: ", end='', flush=True)
 
 try:
-    for chunk in juggler.juggle_stream(
+    for chunk in jugglerr.juggle_stream(
         messages=[{"role": "user", "content": "Write a haiku about coding."}],
         temperature=1.2
     ):
@@ -67,7 +67,7 @@ print("User: What's its population?")
 print("Assistant: ", end='', flush=True)
 
 try:
-    for chunk in juggler.juggle_stream(messages=conversation):
+    for chunk in jugglerr.juggle_stream(messages=conversation):
         print(chunk, end='', flush=True)
     print("\n")
 except Exception as e:
@@ -80,7 +80,7 @@ print("User: Explain quantum computing in one sentence.")
 print("Assistant: ", end='', flush=True)
 
 try:
-    for chunk in juggler.juggle_stream(
+    for chunk in jugglerr.juggle_stream(
         messages=[{"role": "user", "content": "Explain quantum computing in one sentence."}],
         preferred_provider="groq"
     ):
@@ -96,7 +96,7 @@ print("User: Write a complex algorithm explanation.")
 print("Assistant: ", end='', flush=True)
 
 try:
-    for chunk in juggler.juggle_stream(
+    for chunk in jugglerr.juggle_stream(
         messages=[{"role": "user", "content": "Explain the quicksort algorithm in simple terms."}],
         power="super"
     ):
@@ -113,7 +113,7 @@ print("Collecting chunks...")
 
 try:
     chunks = []
-    for chunk in juggler.juggle_stream(
+    for chunk in jugglerr.juggle_stream(
         messages=[{"role": "user", "content": "Count from 1 to 5, one number per line."}]
     ):
         chunks.append(chunk)
@@ -134,7 +134,7 @@ import time
 print("Non-streaming (wait for complete response):")
 start = time.time()
 try:
-    response = juggler.juggle([
+    response = jugglerr.juggle([
         {"role": "user", "content": "Say hello in 5 different languages."}
     ])
     elapsed = time.time() - start
@@ -148,7 +148,7 @@ start = time.time()
 first_token_time = None
 try:
     print("Response: ", end='', flush=True)
-    for i, chunk in enumerate(juggler.juggle_stream([
+    for i, chunk in enumerate(jugglerr.juggle_stream([
         {"role": "user", "content": "Say hello in 5 different languages."}
     ])):
         if i == 0:
@@ -167,7 +167,7 @@ print("-" * 80)
 
 try:
     print("Attempting to stream with invalid configuration...")
-    for chunk in juggler.juggle_stream(
+    for chunk in jugglerr.juggle_stream(
         messages=[{"role": "user", "content": "Hello"}],
         preferred_provider="nonexistent"
     ):

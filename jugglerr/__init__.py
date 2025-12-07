@@ -1,31 +1,31 @@
 """
-🤹 Juggler - Juggle multiple LLM providers like a pro.
+🤹 Jugglerr - Juggle multiple LLM providers like a pro.
 
 Smart routing, multi-key rotation, and automatic fallbacks for
 chat, embeddings, reranking, TTS, and STT across multiple providers.
 
 Example:
-    >>> from juggler import Juggler
+    >>> from jugglerr import Jugglerr
     >>> 
-    >>> juggler = Juggler()  # Auto-loads from .env
+    >>> jugglerr = Jugglerr()  # Auto-loads from .env
     >>> 
     >>> # Chat
-    >>> response = juggler.chat([{"role": "user", "content": "Hello!"}])
+    >>> response = jugglerr.chat([{"role": "user", "content": "Hello!"}])
     >>> 
     >>> # Embeddings
-    >>> embeddings = juggler.embed(["text1", "text2"])
+    >>> embeddings = jugglerr.embed(["text1", "text2"])
     >>> 
     >>> # Reranking
-    >>> top_docs = juggler.rerank("query", ["doc1", "doc2", "doc3"])
+    >>> top_docs = jugglerr.rerank("query", ["doc1", "doc2", "doc3"])
     >>> 
     >>> # Speech-to-Text
-    >>> text = juggler.transcribe("audio.mp3")
+    >>> text = jugglerr.transcribe("audio.mp3")
     >>> 
     >>> # Text-to-Speech
-    >>> audio = juggler.speak("Hello world", voice="Aria")
+    >>> audio = jugglerr.speak("Hello world", voice="Aria")
 """
 
-from .juggler import Juggler
+from .jugglerr import Jugglerr
 from .capabilities import Capabilities
 from .response import (
     ModelAttempt,
@@ -83,7 +83,7 @@ from .exceptions import (
 from .version import __version__
 
 __all__ = [
-    'Juggler',
+    'Jugglerr',
     'Capabilities',
     'ModelAttempt',
     'ChatResponse',

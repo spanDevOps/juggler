@@ -10,7 +10,7 @@ Cohere uses a different streaming format than other providers:
 - Text in 'text' field (not 'delta.content')
 """
 
-from juggler import LLMJuggler
+from jugglerr import LLMJugglerr
 import sys
 
 def example_1_simple_streaming():
@@ -19,7 +19,7 @@ def example_1_simple_streaming():
     print("Example 1: Simple Cohere Streaming")
     print("="*60)
     
-    juggler = LLMJuggler()
+    jugglerr = LLMJugglerr()
     
     messages = [
         {"role": "user", "content": "Write a haiku about streaming data."}
@@ -28,7 +28,7 @@ def example_1_simple_streaming():
     print("\nStreaming response:")
     print("-" * 40)
     
-    for chunk in juggler.juggle_stream(
+    for chunk in jugglerr.juggle_stream(
         messages=messages,
         preferred_provider="cohere",
         preferred_model="command-r",
@@ -46,7 +46,7 @@ def example_2_conversation_streaming():
     print("Example 2: Conversation with Streaming")
     print("="*60)
     
-    juggler = LLMJuggler()
+    jugglerr = LLMJugglerr()
     
     messages = [
         {"role": "user", "content": "What are the benefits of streaming?"},
@@ -57,7 +57,7 @@ def example_2_conversation_streaming():
     print("\nStreaming response:")
     print("-" * 40)
     
-    for chunk in juggler.juggle_stream(
+    for chunk in jugglerr.juggle_stream(
         messages=messages,
         preferred_provider="cohere",
         preferred_model="command-r-08-2024",
@@ -75,7 +75,7 @@ def example_3_collect_response():
     print("Example 3: Collect Full Response")
     print("="*60)
     
-    juggler = LLMJuggler()
+    jugglerr = LLMJugglerr()
     
     messages = [
         {"role": "user", "content": "Count from 1 to 5."}
@@ -85,7 +85,7 @@ def example_3_collect_response():
     print("-" * 40)
     
     chunks = []
-    for chunk in juggler.juggle_stream(
+    for chunk in jugglerr.juggle_stream(
         messages=messages,
         preferred_provider="cohere",
         preferred_model="command",
@@ -110,7 +110,7 @@ def example_4_super_model_streaming():
     print("Example 4: Super Model Streaming")
     print("="*60)
     
-    juggler = LLMJuggler()
+    jugglerr = LLMJugglerr()
     
     messages = [
         {"role": "user", "content": "Explain quantum computing in one sentence."}
@@ -119,7 +119,7 @@ def example_4_super_model_streaming():
     print("\nStreaming with command-r-plus:")
     print("-" * 40)
     
-    for chunk in juggler.juggle_stream(
+    for chunk in jugglerr.juggle_stream(
         messages=messages,
         preferred_provider="cohere",
         preferred_model="command-r-plus-08-2024",
@@ -138,7 +138,7 @@ def example_5_error_handling():
     print("Example 5: Error Handling")
     print("="*60)
     
-    juggler = LLMJuggler()
+    jugglerr = LLMJugglerr()
     
     messages = [
         {"role": "user", "content": "Hello!"}
@@ -148,7 +148,7 @@ def example_5_error_handling():
         print("\nAttempting to stream:")
         print("-" * 40)
         
-        for chunk in juggler.juggle_stream(
+        for chunk in jugglerr.juggle_stream(
             messages=messages,
             preferred_provider="cohere",
             temperature=0.7
@@ -195,7 +195,7 @@ def main():
         print(f"\n\n❌ Error running examples: {e}")
         print("\nMake sure you have:")
         print("  1. Cohere API key in .env file (COHERE_API_KEYS)")
-        print("  2. juggler package installed")
+        print("  2. jugglerr package installed")
         sys.exit(1)
 
 

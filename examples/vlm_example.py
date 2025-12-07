@@ -5,7 +5,7 @@ Demonstrates using VLMs for vision tasks instead of specialized CV models.
 """
 import os
 from pathlib import Path
-from juggler import VLMVisionAdapter
+from jugglerr import VLMVisionAdapter
 
 # Get API key
 api_key = os.getenv("NVIDIA_API_KEY") or os.getenv("NVIDIA_API_KEYS", "").split(",")[0]

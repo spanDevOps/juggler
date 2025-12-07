@@ -1,5 +1,5 @@
 """
-LLM Juggler - Multi-provider routing with intelligent key selection.
+Jugglerr - Multi-provider routing with intelligent key selection.
 
 Features:
 - Power-based routing (super vs regular)
@@ -73,9 +73,9 @@ PROVIDER_PRIORITY = [
 ]
 
 
-class Juggler:
+class Jugglerr:
     """
-    Juggler - Multi-provider intelligent routing for LLMs and specialized models.
+    Jugglerr - Multi-provider intelligent routing for LLMs and specialized models.
     
     Features:
     - Smart provider selection (free first)
@@ -86,10 +86,10 @@ class Juggler:
     - Automatic fallback for chat, embeddings, reranking, TTS, STT
     
     Example:
-        >>> from juggler import Juggler
+        >>> from jugglerr import Jugglerr
         >>> 
-        >>> juggler = Juggler()  # Auto-loads from .env
-        >>> response = juggler.chat("Hello, world!")
+        >>> jugglerr = Jugglerr()  # Auto-loads from .env
+        >>> response = jugglerr.chat("Hello, world!")
         >>> print(response)
     """
     
@@ -102,7 +102,7 @@ class Juggler:
         cohere_keys: Optional[List[str]] = None
     ):
         """
-        Initialize Juggler with API keys.
+        Initialize Jugglerr with API keys.
         
         API keys can be provided directly or loaded from environment variables.
         Environment variables should be comma-separated lists.
@@ -116,10 +116,10 @@ class Juggler:
             
         Example:
             >>> # Auto-load from .env file
-            >>> juggler = Juggler()
+            >>> jugglerr = Jugglerr()
             
             >>> # Or pass keys directly
-            >>> juggler = Juggler(
+            >>> jugglerr = Jugglerr(
             ...     cerebras_keys=["csk_key1", "csk_key2"],
             ...     groq_keys=["gsk_key1"]
             ... )
@@ -134,7 +134,7 @@ class Juggler:
         # In-memory state cache: {provider_key: {remaining_requests, remaining_tokens, reset_at, ...}}
         self.key_state = {}
         
-        logger.info("🤹 LLM Juggler initialized")
+        logger.info("🤹 Jugglerr initialized")
         logger.info(f"  Cerebras keys: {len(self.cerebras_keys)}")
         logger.info(f"  Groq keys: {len(self.groq_keys)}")
         logger.info(f"  Mistral keys: {len(self.mistral_keys)}")
@@ -677,11 +677,11 @@ class Juggler:
         
         Example:
             >>> # Simple string query
-            >>> response = juggler.chat("What is 2+2?")
+            >>> response = jugglerr.chat("What is 2+2?")
             >>> print(response)  # "4"
             >>> 
             >>> # With conversation history
-            >>> response = juggler.chat([
+            >>> response = jugglerr.chat([
             ...     {"role": "user", "content": "Hello!"},
             ...     {"role": "assistant", "content": "Hi there!"},
             ...     {"role": "user", "content": "How are you?"}
@@ -836,11 +836,11 @@ class Juggler:
         
         Example:
             >>> # Stream a response
-            >>> for chunk in juggler.chat_stream("Tell me a story"):
+            >>> for chunk in jugglerr.chat_stream("Tell me a story"):
             ...     print(chunk, end='', flush=True)
             >>> 
             >>> # With parameters
-            >>> for chunk in juggler.chat_stream(
+            >>> for chunk in jugglerr.chat_stream(
             ...     "Explain quantum physics",
             ...     power="super",
             ...     temperature=0.3
@@ -1121,7 +1121,7 @@ class Juggler:
             EmbeddingResponse: List of embeddings with models_used tracking
         
         Example:
-            >>> embeddings = juggler.embed(["Hello world", "Test text"])
+            >>> embeddings = jugglerr.embed(["Hello world", "Test text"])
             >>> print(len(embeddings))  # 2
             >>> print(embeddings.dimensions)  # 4096
             >>> print(embeddings.models_used)  # Tracking info
@@ -1366,7 +1366,7 @@ class Juggler:
         
         Example:
             >>> docs = ["Doc 1", "Doc 2", "Doc 3"]
-            >>> top_docs = juggler.rerank("What is AI?", docs, top_k=2)
+            >>> top_docs = jugglerr.rerank("What is AI?", docs, top_k=2)
             >>> print(top_docs)  # Works like a list
             >>> print(top_docs.models_used)  # Access tracking info
         """
@@ -1524,7 +1524,7 @@ class Juggler:
             NoProvidersAvailableError: If all providers fail
         
         Example:
-            >>> text = juggler.transcribe("audio.mp3")
+            >>> text = jugglerr.transcribe("audio.mp3")
             >>> print(text)  # Works like a string
             >>> print(text.models_used)  # Access tracking info
             >>> print(text.language)  # Detected language
@@ -1627,12 +1627,12 @@ class Juggler:
             NoProvidersAvailableError: If all providers fail
         
         Example:
-            >>> audio = juggler.speak("Hello world", voice="Aria")
+            >>> audio = jugglerr.speak("Hello world", voice="Aria")
             >>> audio.write_to_file("hello.mp3")
             >>> print(audio.models_used)  # Access tracking info
             
             >>> # Or save directly
-            >>> juggler.speak("Hello", voice="Aria", output_file="hello.mp3")
+            >>> jugglerr.speak("Hello", voice="Aria", output_file="hello.mp3")
         """
         logger.info("🔊 Generating speech")
         logger.info(f"  Text: {text[:50]}...")

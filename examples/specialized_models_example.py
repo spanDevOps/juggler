@@ -12,7 +12,7 @@ sys.path.insert(0, '.')
 
 import os
 from dotenv import load_dotenv
-from juggler.specialized_adapters import SafetyAdapter, TranslationAdapter
+from jugglerr.specialized_adapters import SafetyAdapter, TranslationAdapter
 
 load_dotenv()
 

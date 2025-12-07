@@ -6,7 +6,7 @@
 
 ## Overview
 
-Every Juggler response now includes a `models_used` attribute that tracks the complete fallback chain. This provides transparency into which providers and models were tried, which succeeded, and why others failed.
+Every Jugglerr response now includes a `models_used` attribute that tracks the complete fallback chain. This provides transparency into which providers and models were tried, which succeeded, and why others failed.
 
 ---
 
@@ -22,14 +22,14 @@ Every Juggler response now includes a `models_used` attribute that tracks the co
 
 ## Response Objects
 
-All Juggler methods return objects that:
+All Jugglerr methods return objects that:
 - **Behave like their simple types** (string, list) for backward compatibility
 - **Include `models_used` attribute** for tracking
 
 ### ChatResponse
 
 ```python
-response = juggler.chat([{"role": "user", "content": "Hello"}])
+response = Jugglerr.chat([{"role": "user", "content": "Hello"}])
 
 # Behaves like a string
 print(response)  # "Hello! How can I help you?"
@@ -44,7 +44,7 @@ print(response.models_used)
 ### EmbeddingResponse
 
 ```python
-embeddings = juggler.embed(["Hello", "World"])
+embeddings = Jugglerr.embed(["Hello", "World"])
 
 # Behaves like a list
 print(len(embeddings))  # 2
@@ -60,7 +60,7 @@ print(embeddings.dimensions)  # 4096
 ### RerankResponse
 
 ```python
-top_docs = juggler.rerank("query", ["doc1", "doc2", "doc3"], top_k=2)
+top_docs = Jugglerr.rerank("query", ["doc1", "doc2", "doc3"], top_k=2)
 
 # Behaves like a list
 print(len(top_docs))  # 2
@@ -75,7 +75,7 @@ print(top_docs.scores)  # [0.95, 0.87]
 ### TranscriptionResponse
 
 ```python
-text = juggler.transcribe("audio.mp3")
+text = Jugglerr.transcribe("audio.mp3")
 
 # Behaves like a string
 print(text)
@@ -90,7 +90,7 @@ print(text.duration)  # 45.2
 ### SpeechResponse
 
 ```python
-audio = juggler.speak("Hello world")
+audio = Jugglerr.speak("Hello world")
 
 # Has audio_data and write_to_file()
 audio.write_to_file("output.mp3")
@@ -126,7 +126,7 @@ Each attempt in `models_used` contains:
 ### Example 1: Successful First Attempt
 
 ```python
-response = juggler.chat([{"role": "user", "content": "Hello"}])
+response = Jugglerr.chat([{"role": "user", "content": "Hello"}])
 
 print(response.models_used)
 # [
@@ -144,7 +144,7 @@ print(response.models_used)
 ### Example 2: Fallback After Rate Limit
 
 ```python
-response = juggler.chat([{"role": "user", "content": "Hello"}])
+response = Jugglerr.chat([{"role": "user", "content": "Hello"}])
 
 print(response.models_used)
 # [
@@ -172,7 +172,7 @@ print(response.models_used)
 ### Example 3: Multiple Failures Before Success
 
 ```python
-response = juggler.chat([{"role": "user", "content": "Hello"}])
+response = Jugglerr.chat([{"role": "user", "content": "Hello"}])
 
 print(response.models_used)
 # [
@@ -211,7 +211,7 @@ print(response.models_used)
 
 ```python
 try:
-    response = juggler.chat([{"role": "user", "content": "Hello"}])
+    response = Jugglerr.chat([{"role": "user", "content": "Hello"}])
 except Exception as e:
     print(f"All providers failed: {e}")
     # Check what was tried (if available)
@@ -222,7 +222,7 @@ except Exception as e:
 ```python
 responses = []
 for i in range(100):
-    response = juggler.chat([{"role": "user", "content": f"Test {i}"}])
+    response = Jugglerr.chat([{"role": "user", "content": f"Test {i}"}])
     responses.append(response)
 
 # Analyze which providers were used
@@ -244,7 +244,7 @@ paid_providers = {'mistral', 'cohere', 'openai'}
 
 responses = []
 for query in queries:
-    response = juggler.chat([{"role": "user", "content": query}])
+    response = Jugglerr.chat([{"role": "user", "content": query}])
     responses.append(response)
 
 # Count paid vs free
@@ -260,7 +260,7 @@ print(f"Free: {free_count}, Paid: {paid_count}")
 ### 4. Performance Analysis
 
 ```python
-response = juggler.chat([{"role": "user", "content": "Hello"}])
+response = Jugglerr.chat([{"role": "user", "content": "Hello"}])
 
 # Check response time
 if response.models_used:
@@ -276,7 +276,7 @@ if response.models_used:
 import json
 import logging
 
-response = juggler.chat([{"role": "user", "content": "Hello"}])
+response = Jugglerr.chat([{"role": "user", "content": "Hello"}])
 
 # Log the complete trace
 log_data = {
@@ -297,10 +297,10 @@ The response objects are fully backward compatible:
 
 ```python
 # Old code still works
-response = juggler.chat([{"role": "user", "content": "Hello"}])
+response = Jugglerr.chat([{"role": "user", "content": "Hello"}])
 print(response)  # Works like a string
 
-embeddings = juggler.embed(["text"])
+embeddings = Jugglerr.embed(["text"])
 print(len(embeddings))  # Works like a list
 
 # New code can access models_used
@@ -317,7 +317,7 @@ Convert to JSON for storage or API responses:
 ```python
 import json
 
-response = juggler.chat([{"role": "user", "content": "Hello"}])
+response = Jugglerr.chat([{"role": "user", "content": "Hello"}])
 
 # Serialize to JSON
 data = {

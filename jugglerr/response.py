@@ -1,5 +1,5 @@
 """
-Response objects for Juggler with models_used tracking.
+Response objects for Jugglerr with models_used tracking.
 
 These objects behave like their simple types (str, list) but include
 a models_used attribute for debugging and transparency.

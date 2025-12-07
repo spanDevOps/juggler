@@ -8,7 +8,7 @@ Demonstrates the complete workflow:
 """
 import os
 from pathlib import Path
-from juggler import VisionAdapter, OCRAdapter, ObjectDetectionAdapter
+from jugglerr import VisionAdapter, OCRAdapter, ObjectDetectionAdapter
 
 # Get API key
 api_key = os.getenv("NVIDIA_API_KEY") or os.getenv("NVIDIA_API_KEYS", "").split(",")[0]
@@ -84,7 +84,7 @@ print("="*70)
 print("""
 To upload from a file:
 
-    from juggler import VisionAdapter
+    from jugglerr import VisionAdapter
     
     vision = VisionAdapter(api_key="nvapi-...")
     

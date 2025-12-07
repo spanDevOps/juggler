@@ -8,7 +8,7 @@ This example demonstrates how to use Cohere's specialized adapters:
 """
 
 import os
-from juggler import cohere_embed, cohere_rerank
+from jugglerr import cohere_embed, cohere_rerank
 
 # Get API key from environment
 api_key = os.getenv('COHERE_API_KEY')
@@ -103,7 +103,7 @@ for i, result in enumerate(results, 1):
 print("\n\nExample 4: Using Adapter Classes Directly")
 print("-" * 70)
 
-from juggler.cohere_adapters import CohereEmbeddingAdapter, CohereRerankAdapter
+from jugglerr.cohere_adapters import CohereEmbeddingAdapter, CohereRerankAdapter
 
 # Initialize adapters
 embed_adapter = CohereEmbeddingAdapter(api_key=api_key)

@@ -1,11 +1,11 @@
 """
-Embedding example using Juggler.
+Embedding example using Jugglerr.
 """
 
-from juggler import LLMJuggler
+from jugglerr import LLMJugglerr
 
-# Initialize Juggler with NVIDIA API key
-juggler = LLMJuggler(
+# Initialize Jugglerr with NVIDIA API key
+jugglerr = LLMJugglerr(
     nvidia_keys=["your-nvidia-api-key"]  # Or load from .env
 )
 
@@ -17,7 +17,7 @@ texts = [
     "Natural language processing deals with text"
 ]
 
-embeddings = juggler.embed(texts)
+embeddings = jugglerr.embed(texts)
 print(f"Generated {len(embeddings)} embeddings")
 print(f"Embedding dimension: {len(embeddings[0])}")
 print()
@@ -25,7 +25,7 @@ print()
 # Example 2: Query embedding for search
 print("Example 2: Query embedding for search")
 query = "What is machine learning?"
-query_embedding = juggler.embed_query(query)
+query_embedding = jugglerr.embed_query(query)
 print(f"Query embedding dimension: {len(query_embedding)}")
 print()
 
@@ -37,7 +37,7 @@ documents = [
     "SQL is used for databases"
 ]
 
-doc_embeddings = juggler.embed_documents(documents)
+doc_embeddings = jugglerr.embed_documents(documents)
 print(f"Generated {len(doc_embeddings)} document embeddings")
 print()
 
@@ -50,7 +50,7 @@ def fibonacci(n):
     return fibonacci(n-1) + fibonacci(n-2)
 """
 
-code_embedding = juggler.embed(
+code_embedding = jugglerr.embed(
     code_snippet,
     model="nvidia/nv-embedcode-7b-v1",
     input_type="query"
@@ -68,7 +68,7 @@ multilingual_texts = [
     "Привет мир"
 ]
 
-multilingual_embeddings = juggler.embed(
+multilingual_embeddings = jugglerr.embed(
     multilingual_texts,
     model="baai/bge-m3"
 )

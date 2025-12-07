@@ -7,7 +7,7 @@ class Capabilities:
     Use these constants when specifying required capabilities for your requests.
     
     Example:
-        >>> juggler.juggle(
+        >>> jugglerr.juggle(
         ...     "Analyze this image",
         ...     capabilities=[Capabilities.VISION]
         ... )
