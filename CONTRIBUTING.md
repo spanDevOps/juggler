@@ -6,7 +6,7 @@ Thank you for your interest in contributing to LLM Juggler! 🤹
 
 ### Reporting Bugs
 
-1. Check if the bug has already been reported in [Issues](https://github.com/spanDevOps/juggler/issues)
+1. Check if the bug has already been reported in [Issues](https://github.com/spanDevOps/jugglerr/issues)
 2. If not, create a new issue with:
    - Clear title and description
    - Steps to reproduce
@@ -16,7 +16,7 @@ Thank you for your interest in contributing to LLM Juggler! 🤹
 
 ### Suggesting Features
 
-1. Check [Issues](https://github.com/spanDevOps/juggler/issues) for existing feature requests
+1. Check [Issues](https://github.com/spanDevOps/jugglerr/issues) for existing feature requests
 2. Create a new issue with:
    - Clear use case
    - Proposed solution
@@ -38,8 +38,8 @@ Thank you for your interest in contributing to LLM Juggler! 🤹
 
 ```bash
 # Clone your fork
-git clone https://github.com/spanDevOps/juggler.git
-cd juggler
+git clone https://github.com/spanDevOps/jugglerr.git
+cd jugglerr
 
 # Create virtual environment
 python -m venv venv
@@ -117,7 +117,7 @@ To add a new provider:
 
 ## Questions?
 
-- Open a [Discussion](https://github.com/spanDevOps/juggler/discussions)
+- Open a [Discussion](https://github.com/spanDevOps/jugglerr/discussions)
 - Ask in Issues
 - Check existing documentation
 

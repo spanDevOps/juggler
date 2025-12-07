@@ -238,7 +238,7 @@ Juggler automatically falls back to alternative providers if one fails:
 | **Transcription** | Groq |
 | **Text-to-Speech** | Groq |
 
-See [FALLBACK_CHAINS.md](https://github.com/spanDevOps/juggler/blob/main/docs/FALLBACK_CHAINS.md) for complete details.
+See [FALLBACK_CHAINS.md](https://github.com/spanDevOps/jugglerrr/blob/main/docs/FALLBACK_CHAINS.md) for complete details.
 
 ## Supported Providers & Models
 
@@ -261,7 +261,7 @@ See [FALLBACK_CHAINS.md](https://github.com/spanDevOps/juggler/blob/main/docs/FA
 | **Transcription** | Groq | whisper-large-v3, distil-whisper-large-v3 |
 | **Text-to-Speech** | Groq | whisper-large-v3-turbo |
 
-See [MODEL_LIST.md](https://github.com/spanDevOps/juggler/blob/main/docs/MODEL_LIST.md) for complete model catalog.
+See [MODEL_LIST.md](https://github.com/spanDevOps/jugglerr/blob/main/docs/MODEL_LIST.md) for complete model catalog.
 
 ## How It Works
 
@@ -416,29 +416,29 @@ See the `examples/` directory for complete examples:
 
 ## Documentation
 
-📚 **[Complete Documentation](https://github.com/spanDevOps/juggler/tree/main/docs)** - All guides, references, and implementation details
+📚 **[Complete Documentation](https://github.com/spanDevOps/jugglerr/tree/main/docs)** - All guides, references, and implementation details
 
 **Quick Links:**
-- 📖 [User Guide](https://github.com/spanDevOps/juggler/blob/main/docs/USER_GUIDE.md) - Complete usage guide
-- 🔄 [Fallback Chains](https://github.com/spanDevOps/juggler/blob/main/docs/FALLBACK_CHAINS.md) - Provider fallback mapping
-- 📊 [Response Tracking](https://github.com/spanDevOps/juggler/blob/main/docs/MODELS_USED_TRACKING.md) - Track model usage
-- 🗂️ [Model List](https://github.com/spanDevOps/juggler/blob/main/docs/MODEL_LIST.md) - All available models
+- 📖 [User Guide](https://github.com/spanDevOps/jugglerr/blob/main/docs/USER_GUIDE.md) - Complete usage guide
+- 🔄 [Fallback Chains](https://github.com/spanDevOps/jugglerr/blob/main/docs/FALLBACK_CHAINS.md) - Provider fallback mapping
+- 📊 [Response Tracking](https://github.com/spanDevOps/jugglerr/blob/main/docs/MODELS_USED_TRACKING.md) - Track model usage
+- 🗂️ [Model List](https://github.com/spanDevOps/jugglerr/blob/main/docs/MODEL_LIST.md) - All available models
 
 ## Contributing
 
-Contributions welcome! Please read [CONTRIBUTING.md](https://github.com/spanDevOps/juggler/blob/main/CONTRIBUTING.md) first.
+Contributions welcome! Please read [CONTRIBUTING.md](https://github.com/spanDevOps/jugglerr/blob/main/CONTRIBUTING.md) first.
 
 ## License
 
-MIT License - see [LICENSE](https://github.com/spanDevOps/juggler/blob/main/LICENSE) file for details.
+MIT License - see [LICENSE](https://github.com/spanDevOps/jugglerr/blob/main/LICENSE) file for details.
 
 ## Support & Sponsorship
 
 ### Get Help
 
-- 📖 [Documentation](https://github.com/spanDevOps/juggler/tree/main/docs)
-- 🐛 [Issue Tracker](https://github.com/spanDevOps/juggler/issues)
-- 💬 [Discussions](https://github.com/spanDevOps/juggler/discussions)
+- 📖 [Documentation](https://github.com/spanDevOps/jugglerr/tree/main/docs)
+- 🐛 [Issue Tracker](https://github.com/spanDevOps/jugglerr/issues)
+- 💬 [Discussions](https://github.com/spanDevOps/jugglerr/discussions)
 
 ### Support This Project
 

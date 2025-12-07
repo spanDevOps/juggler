@@ -45,10 +45,10 @@ dev = [
 packages = ["juggler"]
 
 [project.urls]
-Homepage = "https://github.com/spanDevOps/juggler"
-Documentation = "https://github.com/spanDevOps/juggler#readme"
-Repository = "https://github.com/spanDevOps/juggler"
-Issues = "https://github.com/spanDevOps/juggler/issues"
+Homepage = "https://github.com/spanDevOps/jugglerr"
+Documentation = "https://github.com/spanDevOps/jugglerr#readme"
+Repository = "https://github.com/spanDevOps/jugglerr"
+Issues = "https://github.com/spanDevOps/jugglerr/issues"
 
 [tool.black]
 line-length = 120
